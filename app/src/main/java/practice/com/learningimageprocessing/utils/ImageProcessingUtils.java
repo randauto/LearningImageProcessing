@@ -15,7 +15,7 @@ import android.graphics.drawable.Drawable;
  */
 public class ImageProcessingUtils {
     public static Bitmap getBitmapFromDrawable(Context context, Drawable drawable) {
-        Bitmap bitmap = null;
+        Bitmap bitmap;
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
             if (bitmapDrawable.getBitmap() != null) {
