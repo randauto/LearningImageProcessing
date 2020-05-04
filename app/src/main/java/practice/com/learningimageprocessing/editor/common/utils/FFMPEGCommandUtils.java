@@ -20,14 +20,14 @@ public class FFMPEGCommandUtils {
         return fFMPEGCommand.getCommand();
     }
 
-    public static String buildImageSequenceOverlayCommand(String str, String str2, String str3, int i, String str4) {
+    public static String buildImageSequenceOverlayCommand(String photoPath, String temp, String frameNamePattern, int fps, String outPutFile) {
         FFMPEGCommand fFMPEGCommand = new FFMPEGCommand();
-        FFMPEGCommand inputFrameRate = fFMPEGCommand.loop(true).input(str).inputFrameRate(i);
+        FFMPEGCommand inputFrameRate = fFMPEGCommand.loop(true).input(photoPath).inputFrameRate(fps);
         StringBuilder sb = new StringBuilder();
-        sb.append(str2);
+        sb.append(temp);
         sb.append(File.separator);
-        sb.append(str3);
-        inputFrameRate.input(sb.toString()).filterComplex(new FilterGraph().overlayShortest()).overwriteExistingOutput().output(str4);
+        sb.append(frameNamePattern);
+        inputFrameRate.input(sb.toString()).filterComplex(new FilterGraph().overlayShortest()).overwriteExistingOutput().output(outPutFile);
         return fFMPEGCommand.getCommand();
     }
 

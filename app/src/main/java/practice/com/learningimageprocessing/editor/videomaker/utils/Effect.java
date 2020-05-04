@@ -44,7 +44,8 @@ public class Effect {
         sb.append(this.name);
         sb.append("/");
         String sb2 = sb.toString();
-        String format = String.format("%s%s%s", new Object[]{this.name, String.format(DevConstants.FRAME_SEQUENTIAL_POSTFIX, new Object[]{Integer.valueOf(i)}), DevConstants.PNG_EXTENSION});
+        String format = String.format("%s%s%s", new Object[]{this.name, String.format(DevConstants.FRAME_SEQUENTIAL_POSTFIX,
+                new Object[]{Integer.valueOf(i)}), DevConstants.PNG_EXTENSION});
         StringBuilder sb3 = new StringBuilder();
         sb3.append(str);
         sb3.append(File.separator);

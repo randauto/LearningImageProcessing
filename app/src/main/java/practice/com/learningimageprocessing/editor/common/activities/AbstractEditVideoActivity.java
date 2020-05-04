@@ -138,7 +138,7 @@ public abstract class AbstractEditVideoActivity extends BaseActivity {
 
     /* access modifiers changed from: protected */
     /* renamed from: b */
-    public void mo16424b(String str) {
+    public void executeCommand(String str) {
         try {
             this.fFmpeg.execute(str.split(FFMPEGConstants.COMMAND_SPLITTER), new C11732());
         } catch (FFmpegCommandAlreadyRunningException e) {

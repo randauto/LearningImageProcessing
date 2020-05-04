@@ -107,7 +107,7 @@ public class ShowResultActivity extends AbstractEditVideoActivity implements IFF
     public void exportGif() {
         if (this.outputVideoPath != null) {
             this.outputGifPath = generateOutputFilePath();
-            mo16424b(FFMPEGCommandUtils.buildConvertVideoToGifCommand(this.outputVideoPath, this.outputGifPath));
+            executeCommand(FFMPEGCommandUtils.buildConvertVideoToGifCommand(this.outputVideoPath, this.outputGifPath));
             return;
         }
         mo16453c(getString(R.string.message_no_video_to_export_gif));

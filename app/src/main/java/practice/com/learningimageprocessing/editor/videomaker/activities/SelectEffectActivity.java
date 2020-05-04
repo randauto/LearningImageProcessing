@@ -126,14 +126,17 @@ public class SelectEffectActivity extends AbstractEditVideoActivity implements A
         /* access modifiers changed from: protected */
         /* renamed from: a */
         public Void doInBackground(Void... voidArr) {
-            StorageUtils.copyFolderInInternalStorage(SelectEffectActivity.this, new File(SelectEffectActivity.this.getSelectedEffect().getFolderPath(SelectEffectActivity.this.effectInternalFolderPath)), new File(SelectEffectActivity.this.effectTempInternalFolderPath), AssetManager.getInstance().encryptedSeed);
+            StorageUtils.copyFolderInInternalStorage(SelectEffectActivity.this,
+                    new File(SelectEffectActivity.this.getSelectedEffect().getFolderPath(SelectEffectActivity.this.effectInternalFolderPath)),
+                    new File(SelectEffectActivity.this.effectTempInternalFolderPath),
+                    AssetManager.getInstance().encryptedSeed);
             return null;
         }
 
         /* access modifiers changed from: protected */
         /* renamed from: a */
         public void onPostExecute(Void voidR) {
-            SelectEffectActivity.this.mo16424b(SelectEffectActivity.this.buildCreateEffectCommand());
+            SelectEffectActivity.this.executeCommand(buildCreateEffectCommand());
         }
 
         /* access modifiers changed from: protected */
@@ -169,7 +172,12 @@ public class SelectEffectActivity extends AbstractEditVideoActivity implements A
     /* access modifiers changed from: private */
     public String buildCreateEffectCommand() {
         this.outputFilePath = generateOutputFilePath();
-        return FFMPEGCommandUtils.buildImageSequenceOverlayCommand(this.selectedPhotoPath, this.effectTempInternalFolderPath, getSelectedEffect().getFrameNamePattern(), getSelectedEffect().getFps(), this.outputFilePath);
+        return FFMPEGCommandUtils.buildImageSequenceOverlayCommand(
+                this.selectedPhotoPath,
+                this.effectTempInternalFolderPath,
+                getSelectedEffect().getFrameNamePattern(),
+                getSelectedEffect().getFps(),
+                this.outputFilePath);
     }
 
     private String generateOutputFilePath() {
@@ -231,12 +239,12 @@ public class SelectEffectActivity extends AbstractEditVideoActivity implements A
     }
 
     /* access modifiers changed from: private */
-    public void manipulateEffect(int i) {
+    public void manipulateEffect(int index) {
         if (this.assetExistsChecked) {
             if (this.playingAnimation != null) {
                 this.playingAnimation.stop();
             }
-            this.selectedIndex = i;
+            this.selectedIndex = index;
             Effect effect = (Effect) Effect.LIST.get(this.selectedIndex);
             this.playingAnimation = AnimationsContainer.getInstance().createFrameByFrameAnimation(this.ivOverlay, effect.getFramePaths(this.effectInternalFolderPath), effect.getFps());
             this.playingAnimation.start();
