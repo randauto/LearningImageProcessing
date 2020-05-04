@@ -20,6 +20,7 @@ import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
 import android.provider.MediaStore.Video;
 import android.util.Log;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,6 +28,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import p045io.fabric.sdk.android.services.settings.SettingsJsonConstants;
 
 public class StorageUtils {

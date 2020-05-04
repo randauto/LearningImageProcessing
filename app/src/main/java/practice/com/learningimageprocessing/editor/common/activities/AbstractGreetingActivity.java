@@ -9,9 +9,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.p000v4.app.ActivityCompat;
 import android.support.p000v4.content.ContextCompat;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.photo.effect.editor.common.utils.PreferencesUtils;
 import java.util.HashMap;
 import love.heart.gif.autoanimation.videomaker.R;
+import practice.com.learningimageprocessing.R;
+import practice.com.learningimageprocessing.editor.common.utils.PreferencesUtils;
 
 public abstract class AbstractGreetingActivity extends BaseActivity {
 

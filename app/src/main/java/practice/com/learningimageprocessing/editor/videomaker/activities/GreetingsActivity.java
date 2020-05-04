@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.photo.effect.editor.common.activities.AbstractGreetingActivity;
-import com.photo.effect.editor.common.utils.FontUtils;
-import com.photo.effect.editor.common.utils.PreferencesUtils;
-import com.photo.effect.editor.videomaker.application.AssetManager;
+
 import love.heart.gif.autoanimation.videomaker.R;
+import practice.com.learningimageprocessing.R;
+import practice.com.learningimageprocessing.editor.common.activities.AbstractGreetingActivity;
+import practice.com.learningimageprocessing.editor.common.utils.FontUtils;
+import practice.com.learningimageprocessing.editor.common.utils.PreferencesUtils;
+import practice.com.learningimageprocessing.editor.videomaker.application.AssetManager;
 
 public class GreetingsActivity extends AbstractGreetingActivity {
 

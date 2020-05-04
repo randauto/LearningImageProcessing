@@ -2,8 +2,9 @@ package practice.com.learningimageprocessing.editor.common.application;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
-import com.photo.effect.editor.common.utils.PreferencesUtils;
-import love.heart.gif.autoanimation.videomaker.R;
+
+import practice.com.learningimageprocessing.R;
+import practice.com.learningimageprocessing.editor.common.utils.PreferencesUtils;
 
 public class AbstractAssetManager {
 

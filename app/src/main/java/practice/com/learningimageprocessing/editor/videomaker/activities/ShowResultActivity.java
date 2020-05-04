@@ -14,22 +14,19 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
-import com.facebook.ads.AdError;
-import com.facebook.ads.C0482Ad;
-import com.facebook.ads.NativeAdListener;
-import com.google.android.gms.ads.AdListener;
-import com.photo.effect.editor.common.activities.AbstractEditVideoActivity;
-import com.photo.effect.editor.common.activities.AbstractEditVideoActivity.IFFmpegExecuteListener;
-import com.photo.effect.editor.common.constants.DevConstants;
-import com.photo.effect.editor.common.utils.FFMPEGCommandUtils;
-import com.photo.effect.editor.common.utils.StorageUtils;
-import com.photo.effect.editor.videomaker.application.AssetManager;
-import com.photo.effect.editor.videomaker.utils.CustomProgressDialog;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import love.heart.gif.autoanimation.videomaker.R;
-import videoeffect.lovevideo.heartvideo.loveheart.Ads.AdsConfig;
+
+import practice.com.learningimageprocessing.R;
+import practice.com.learningimageprocessing.editor.common.activities.AbstractEditVideoActivity;
+import practice.com.learningimageprocessing.editor.common.activities.AbstractEditVideoActivity.IFFmpegExecuteListener;
+import practice.com.learningimageprocessing.editor.common.constants.DevConstants;
+import practice.com.learningimageprocessing.editor.common.utils.FFMPEGCommandUtils;
+import practice.com.learningimageprocessing.editor.common.utils.StorageUtils;
+import practice.com.learningimageprocessing.editor.videomaker.application.AssetManager;
+import practice.com.learningimageprocessing.editor.videomaker.utils.CustomProgressDialog;
 
 public class ShowResultActivity extends AbstractEditVideoActivity implements IFFmpegExecuteListener {
     private static final String CURRENT_VIDEO_SEC = "currentVideoSec";
@@ -132,7 +129,7 @@ public class ShowResultActivity extends AbstractEditVideoActivity implements IFF
 
     private void playVideo() {
         if (this.outputVideoPath != null) {
-            this.videoView.setVisibility(0);
+            this.videoView.setVisibility(View.VISIBLE);
             this.videoView.setVideoPath(this.outputVideoPath);
             if (this.currentVideoSec != 0) {
                 this.videoView.seekTo(this.currentVideoSec);
@@ -162,32 +159,6 @@ public class ShowResultActivity extends AbstractEditVideoActivity implements IFF
             gradientDrawable.setColor(-1);
             gradientDrawable.setStroke(2, -8875876);
             this.mNativeView.setBackground(gradientDrawable);
-            if (z) {
-                AdsConfig.setFbNative(this, this.mNativeView, new NativeAdListener() {
-                    public void onAdClicked(C0482Ad ad) {
-                    }
-
-                    public void onAdLoaded(C0482Ad ad) {
-                    }
-
-                    public void onError(C0482Ad ad, AdError adError) {
-                        ShowResultActivity.this.showSequenceAd(false, true);
-                    }
-
-                    public void onLoggingImpression(C0482Ad ad) {
-                    }
-
-                    public void onMediaDownloaded(C0482Ad ad) {
-                    }
-                });
-            } else if (z2) {
-                this.mNativeView.setBackground(null);
-                this.mNativeView.addView(AdsConfig.setAdmobBanner_Medium_Rectangle(this, new AdListener() {
-                    public void onAdFailedToLoad(int i) {
-                        ShowResultActivity.this.showSequenceAd(false, false);
-                    }
-                }));
-            }
         } catch (Exception unused) {
             this.mNativeView.setVisibility(8);
         }
@@ -214,9 +185,6 @@ public class ShowResultActivity extends AbstractEditVideoActivity implements IFF
         this.videoView.setOnPreparedListener(new C07302());
         initializeShareButtons();
         this.mNativeView = (RelativeLayout) findViewById(R.id.nativeView);
-        if (AdsConfig.isConnected()) {
-            showSequenceAd(true, false);
-        }
     }
 
     /* access modifiers changed from: protected */

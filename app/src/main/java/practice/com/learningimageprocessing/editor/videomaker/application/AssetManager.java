@@ -5,17 +5,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Typeface;
 import android.util.Log;
-import com.photo.effect.editor.common.application.AbstractAssetManager;
-import com.photo.effect.editor.common.constants.DevConstants;
-import com.photo.effect.editor.common.utils.AssetUtils;
-import com.photo.effect.editor.videomaker.enums.AssetEnum;
+
 import com.photo.effect.editor.videomaker.enums.AssetTypeEnum;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import love.heart.gif.autoanimation.videomaker.R;
+import practice.com.learningimageprocessing.R;
+import practice.com.learningimageprocessing.editor.common.application.AbstractAssetManager;
+import practice.com.learningimageprocessing.editor.common.constants.DevConstants;
+import practice.com.learningimageprocessing.editor.common.utils.AssetUtils;
+import practice.com.learningimageprocessing.editor.videomaker.enums.AssetEnum;
+import practice.com.learningimageprocessing.editor.videomaker.enums.AssetTypeEnum;
 
 public class AssetManager extends AbstractAssetManager {
     private static final AssetManager INSTANCE = new AssetManager();

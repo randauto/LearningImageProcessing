@@ -20,10 +20,10 @@ import practice.com.learningimageprocessing.editor.common.constants.FFMPEGConsta
 public abstract class AbstractEditVideoActivity extends BaseActivity {
 
     /* renamed from: a */
-    protected FFmpeg f5112a;
+    protected FFmpeg fFmpeg;
 
     /* renamed from: b */
-    protected IFFmpegExecuteListener f5113b;
+    protected IFFmpegExecuteListener fmpegExecuteListener;
 
     class C11721 extends LoadBinaryResponseHandler {
         C11721() {
@@ -56,36 +56,36 @@ public abstract class AbstractEditVideoActivity extends BaseActivity {
         public void onFailure(String str) {
             Log.i("EditVideoActivity", "Execute FFMPEG failed!");
             Log.i("EditVideoActivity", str);
-            if (AbstractEditVideoActivity.this.f5113b != null) {
-                AbstractEditVideoActivity.this.f5113b.onFFmpegFailure();
+            if (AbstractEditVideoActivity.this.fmpegExecuteListener != null) {
+                AbstractEditVideoActivity.this.fmpegExecuteListener.onFFmpegFailure();
             }
         }
 
         public void onFinish() {
             Log.i("EditVideoActivity", "Execute FFMPEG finished.");
-            if (AbstractEditVideoActivity.this.f5113b != null) {
-                AbstractEditVideoActivity.this.f5113b.onFFmpegFinish();
+            if (AbstractEditVideoActivity.this.fmpegExecuteListener != null) {
+                AbstractEditVideoActivity.this.fmpegExecuteListener.onFFmpegFinish();
             }
         }
 
         public void onProgress(String str) {
             Log.i("EditVideoActivity", str);
-            if (AbstractEditVideoActivity.this.f5113b != null) {
-                AbstractEditVideoActivity.this.f5113b.onFFmpegProgress(str);
+            if (AbstractEditVideoActivity.this.fmpegExecuteListener != null) {
+                AbstractEditVideoActivity.this.fmpegExecuteListener.onFFmpegProgress(str);
             }
         }
 
         public void onStart() {
-            if (AbstractEditVideoActivity.this.f5113b != null) {
-                AbstractEditVideoActivity.this.f5113b.onFFmpegStart();
+            if (AbstractEditVideoActivity.this.fmpegExecuteListener != null) {
+                AbstractEditVideoActivity.this.fmpegExecuteListener.onFFmpegStart();
             }
         }
 
         public void onSuccess(String str) {
             Log.i("EditVideoActivity", "Execute FFMPEG success.");
             Log.i("EditVideoActivity", str);
-            if (AbstractEditVideoActivity.this.f5113b != null) {
-                AbstractEditVideoActivity.this.f5113b.onFFmpegSuccess();
+            if (AbstractEditVideoActivity.this.fmpegExecuteListener != null) {
+                AbstractEditVideoActivity.this.fmpegExecuteListener.onFFmpegSuccess();
             }
         }
     }
@@ -117,9 +117,9 @@ public abstract class AbstractEditVideoActivity extends BaseActivity {
     /* access modifiers changed from: protected */
     /* renamed from: a */
     public void mo16422a() {
-        this.f5112a = FFmpeg.getInstance(this);
+        this.fFmpeg = FFmpeg.getInstance(this);
         try {
-            this.f5112a.loadBinary(new C11721());
+            this.fFmpeg.loadBinary(new C11721());
         } catch (FFmpegNotSupportedException e) {
             e.printStackTrace();
         }
@@ -140,7 +140,7 @@ public abstract class AbstractEditVideoActivity extends BaseActivity {
     /* renamed from: b */
     public void mo16424b(String str) {
         try {
-            this.f5112a.execute(str.split(FFMPEGConstants.COMMAND_SPLITTER), new C11732());
+            this.fFmpeg.execute(str.split(FFMPEGConstants.COMMAND_SPLITTER), new C11732());
         } catch (FFmpegCommandAlreadyRunningException e) {
             Log.e("EditVideoActivity", "Exception occur when execute FFMPEG!", e);
         }
@@ -152,6 +152,6 @@ public abstract class AbstractEditVideoActivity extends BaseActivity {
     }
 
     public void registerFFmpegExecuteListener(IFFmpegExecuteListener iFFmpegExecuteListener) {
-        this.f5113b = iFFmpegExecuteListener;
+        this.fmpegExecuteListener = iFFmpegExecuteListener;
     }
 }

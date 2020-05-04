@@ -9,6 +9,8 @@ import java.util.Map;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
 
+import practice.com.learningimageprocessing.R;
+
 @SuppressWarnings("unused")
 public class FFmpeg implements FFmpegInterface {
 
