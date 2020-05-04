@@ -1,8 +1,8 @@
 package practice.com.learningimageprocessing.editor.common.dto;
 
-import com.facebook.samples.ads.debugsettings.DebugSettings;
-import com.photo.effect.editor.common.constants.FFMPEGConstants;
 import java.util.logging.Logger;
+
+import practice.com.learningimageprocessing.editor.common.constants.FFMPEGConstants;
 
 public class FFMPEGCommand {
     private StringBuilder command = new StringBuilder();
@@ -113,10 +113,10 @@ public class FFMPEGCommand {
         return this;
     }
 
-    public FFMPEGCommand loop(boolean z) {
+    public FFMPEGCommand loop(boolean isLoop) {
         String str = "-loop %s";
         Object[] objArr = new Object[1];
-        objArr[0] = z ? "1" : DebugSettings.OTHER_BID_DEFAULT;
+        objArr[0] = isLoop ? "1" : 0;
         appendCommand(String.format(str, objArr));
         return this;
     }

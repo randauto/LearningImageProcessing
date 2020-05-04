@@ -1,10 +1,11 @@
 package practice.com.learningimageprocessing.editor.videomaker.utils;
 
-import com.photo.effect.editor.common.constants.DevConstants;
-import com.photo.effect.editor.videomaker.enums.AssetTypeEnum;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import practice.com.learningimageprocessing.editor.common.constants.DevConstants;
+import practice.com.learningimageprocessing.editor.videomaker.enums.AssetTypeEnum;
 
 public class Effect {
     public static final List<Effect> LIST = new ArrayList();

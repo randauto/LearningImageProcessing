@@ -1,13 +1,14 @@
 package practice.com.learningimageprocessing.editor.common.utils;
 
-import com.photo.effect.editor.common.constants.FFMPEGConstants;
-import com.photo.effect.editor.common.dto.FFMPEGCommand;
-import com.photo.effect.editor.common.dto.FFMPEGCommand.FilterGraph;
-import com.photo.effect.editor.common.enums.VideoTransitionEnum;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+
+import practice.com.learningimageprocessing.editor.common.constants.FFMPEGConstants;
+import practice.com.learningimageprocessing.editor.common.dto.FFMPEGCommand;
+import practice.com.learningimageprocessing.editor.common.dto.FFMPEGCommand.FilterGraph;
+import practice.com.learningimageprocessing.editor.common.enums.VideoTransitionEnum;
 
 public class FFMPEGCommandUtils {
     public static final String BLEND_OVERLAY_EXP = "'B*(if(gte(T,%s),1,T/%s))+A*(1-(if(gte(T,%s),1,T/%s)))'";
@@ -48,8 +49,8 @@ public class FFMPEGCommandUtils {
     }
 
     public static String buildSlideShowCommand(List<String> list, List<Float> list2, List<VideoTransitionEnum> list3, List<Float> list4, String str) {
-        FilterGraph blend;
-        StringBuilder sb;
+        FilterGraph blend = new FilterGraph();
+        StringBuilder sb = new StringBuilder();
         List<Float> list5 = list2;
         List<VideoTransitionEnum> list6 = list3;
         List<Float> list7 = list4;

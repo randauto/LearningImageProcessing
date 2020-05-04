@@ -17,29 +17,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.facebook.ads.AdError;
-import com.facebook.ads.C0482Ad;
-import com.facebook.ads.NativeAdListener;
-import com.google.android.gms.ads.AdListener;
-import com.photo.effect.editor.common.activities.AbstractEditVideoActivity;
-import com.photo.effect.editor.common.activities.AbstractEditVideoActivity.IFFmpegExecuteListener;
-import com.photo.effect.editor.common.constants.DevConstants;
-import com.photo.effect.editor.common.utils.AssetUtils;
-import com.photo.effect.editor.common.utils.FFMPEGCommandUtils;
-import com.photo.effect.editor.common.utils.StorageUtils;
-import com.photo.effect.editor.videomaker.application.AnimationsContainer;
-import com.photo.effect.editor.videomaker.application.AnimationsContainer.FramesSequenceAnimation;
-import com.photo.effect.editor.videomaker.application.AssetManager;
-import com.photo.effect.editor.videomaker.utils.CustomProgressDialog;
-import com.photo.effect.editor.videomaker.utils.Effect;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import love.heart.gif.autoanimation.videomaker.R;
-import videoeffect.lovevideo.heartvideo.loveheart.Ads.AdsConfig;
 
-public class SelectEffectActivity extends AbstractEditVideoActivity implements IFFmpegExecuteListener {
+import practice.com.learningimageprocessing.R;
+import practice.com.learningimageprocessing.editor.common.activities.AbstractEditVideoActivity;
+import practice.com.learningimageprocessing.editor.common.constants.DevConstants;
+import practice.com.learningimageprocessing.editor.common.utils.AssetUtils;
+import practice.com.learningimageprocessing.editor.common.utils.FFMPEGCommandUtils;
+import practice.com.learningimageprocessing.editor.common.utils.StorageUtils;
+import practice.com.learningimageprocessing.editor.videomaker.application.AnimationsContainer;
+import practice.com.learningimageprocessing.editor.videomaker.application.AssetManager;
+import practice.com.learningimageprocessing.editor.videomaker.utils.CustomProgressDialog;
+import practice.com.learningimageprocessing.editor.videomaker.utils.Effect;
+import practice.com.learningimageprocessing.videoeffect.lovevideo.heartvideo.loveheart.Ads.AdsConfig;
+
+public class SelectEffectActivity extends AbstractEditVideoActivity implements AbstractEditVideoActivity.IFFmpegExecuteListener {
     public static final String EFFECT_FOLDER_NAME = "effect";
     public static final String EFFECT_TEMP_FOLDER_NAME = "effectTemp";
     /* access modifiers changed from: private */
@@ -60,7 +56,7 @@ public class SelectEffectActivity extends AbstractEditVideoActivity implements I
     /* access modifiers changed from: private */
     public String outputFilePath;
     /* access modifiers changed from: private */
-    public FramesSequenceAnimation playingAnimation;
+    public AnimationsContainer.FramesSequenceAnimation playingAnimation;
     /* access modifiers changed from: private */
     public CustomProgressDialog progressDialog;
     /* access modifiers changed from: private */
@@ -164,22 +160,6 @@ public class SelectEffectActivity extends AbstractEditVideoActivity implements I
         }
 
         public void run() {
-            if (AdsConfig.isConnected()) {
-                AdsConfig.setAdmobInterstitial(new AdListener() {
-                    public void onAdClosed() {
-                        Intent intent = new Intent(SelectEffectActivity.this, ShowResultActivity.class);
-                        intent.putExtra(SelectEffectActivity.OUTPUT_FILE_PATH_KEY, SelectEffectActivity.this.outputFilePath);
-                        SelectEffectActivity.this.startActivity(intent);
-                    }
-
-                    public void onAdFailedToLoad(int i) {
-                        Intent intent = new Intent(SelectEffectActivity.this, ShowResultActivity.class);
-                        intent.putExtra(SelectEffectActivity.OUTPUT_FILE_PATH_KEY, SelectEffectActivity.this.outputFilePath);
-                        SelectEffectActivity.this.startActivity(intent);
-                    }
-                });
-                return;
-            }
             Intent intent = new Intent(SelectEffectActivity.this, ShowResultActivity.class);
             intent.putExtra(SelectEffectActivity.OUTPUT_FILE_PATH_KEY, SelectEffectActivity.this.outputFilePath);
             SelectEffectActivity.this.startActivity(intent);
@@ -247,35 +227,7 @@ public class SelectEffectActivity extends AbstractEditVideoActivity implements I
 
     /* access modifiers changed from: private */
     public void loadBannerAd(boolean z, boolean z2) {
-        if (z) {
-            try {
-                AdsConfig.setFbNativeBanner(this, this.adView, new NativeAdListener() {
-                    public void onAdClicked(C0482Ad ad) {
-                    }
 
-                    public void onAdLoaded(C0482Ad ad) {
-                    }
-
-                    public void onError(C0482Ad ad, AdError adError) {
-                        SelectEffectActivity.this.loadBannerAd(false, true);
-                    }
-
-                    public void onLoggingImpression(C0482Ad ad) {
-                    }
-
-                    public void onMediaDownloaded(C0482Ad ad) {
-                    }
-                });
-            } catch (Exception unused) {
-                this.adView.setVisibility(8);
-            }
-        } else if (z2) {
-            this.adView.addView(AdsConfig.setAdmobBanner(this, new AdListener() {
-                public void onAdFailedToLoad(int i) {
-                    SelectEffectActivity.this.loadBannerAd(false, false);
-                }
-            }));
-        }
     }
 
     /* access modifiers changed from: private */
